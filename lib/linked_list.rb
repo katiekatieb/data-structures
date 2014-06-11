@@ -7,7 +7,7 @@ class List
   end
 
   def add_node(name, before)
-    @last_node = Course.new(name, before)
+    @last_node = Node.new(name, before)
     @size += 1
   end
 

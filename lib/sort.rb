@@ -12,6 +12,7 @@ def insertionSort(array)
 end
 
 def mergeSort(array)
+  puts "--> ARRAY: #{array.inspect}"
   length = array.length
   if length <= 1
     return array
@@ -19,27 +20,32 @@ def mergeSort(array)
     x = length/2
     left = mergeSort(array[0...x])
     right = mergeSort(array[x..length])
+    #puts "BEFORE MERGE LEFT: #{left.inspect} RIGHT: #{right.inspect}"
     merge(left, right)
   end
 end
 
 def merge(left, right)
-  later_array = []
+  array2 = []
   until left.empty? == true || right.empty? == true
     if left[0] <= right[0]
-      later_array.push(left.shift)
+      #puts "IF LEFT: #{left.inspect} RIGHT: #{right.inspect}"
+      array2.push(left.shift)
     else
-      later_array.push(right.shift)
+      #puts "ELSE LEFT: #{left.inspect} RIGHT: #{right.inspect}"
+      array2.push(right.shift)
     end
+    puts "----> ARRAY2: #{array2.inspect}"
   end
-  later_array+left+right
+  array2 + left + right
 end
 
-# x = [3, 43, 6, -9, 0, -300, 239, 3329, -234, 33423, 0]
-# puts mergeSort(x).inspect
+y = [3, 43, 6, -9, 0, -300, 239, 3329, -234, 33423]
+x = [9, -7, 0, 5]
+puts mergeSort(x).inspect
 
 
-# test = Array.new(100000) { rand(1000) }
+test = Array.new(100) { rand(1000) }
 
 # # uno = mergeSort(test).inspect
 # # two = insertionSort(test).inspect
@@ -53,3 +59,36 @@ end
 # require 'benchmark'
 # puts Benchmark.measure { mergeSort(test) }
 # puts Benchmark.measure { insertionSort(test) }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# def bogo(array)
+#   until array == mergeSort(array)
+#     if array != mergeSort(array)
+#       array.shuffle
+#     end
+#   end
+# end

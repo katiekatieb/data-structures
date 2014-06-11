@@ -8,6 +8,7 @@ describe "test sort methods" do
   before do
     @x = [3, 43, 6, -9, 0, -300, 239, 3329, -234, 33423, 0]
     @x2 = Array.new(10) { rand(1000) }
+    @x3 = []
   end
 
   it "should sort the numbers from least to greatest using insertion sort" do
@@ -26,6 +27,11 @@ describe "test sort methods" do
     z = @x2.sort
     y.must_equal x
     x.must_equal z
+  end
+
+  it "should fail on empty array" do
+    x = mergeSort(@x3)
+    x.must_equal []
   end
 
 end
