@@ -21,6 +21,11 @@ describe "test sort methods" do
     y.must_equal [-300, -234, -9, 0, 0, 3, 6, 43, 239, 3329, 33423]
   end
 
+  it "should sort the numbers from least to greatest using quick sort" do
+    y = quickSort(@x)
+    y.must_equal [-300, -234, -9, 0, 0, 3, 6, 43, 239, 3329, 33423]
+  end
+
   it "lets try random numbers :]" do
     y = insertionSort(@x2)
     x = mergeSort(@x2)
@@ -36,5 +41,14 @@ describe "test sort methods" do
 
 end
 
+Minitest.after_run{
+  test = Array.new(10000) { rand(1000) }
 
+  puts "MERGE SORT"
+  puts Benchmark.measure { mergeSort(test) }
+  puts "INSERTION SORT"
+  puts Benchmark.measure { insertionSort(test) }
+  puts "QUICK SORT"
+  puts Benchmark.measure { quickSort(test) }
+}
 
