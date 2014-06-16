@@ -40,26 +40,26 @@ def merge(left, right)
   array2 + left + right
 end
 
-def quicksort(array)
-  return array if array.length <= 1
+# def quicksort(array)
+#   return array if array.length <= 1
 
-  pivot_index = (array.length / 2).to_i
-  pivot_value = array[pivot_index]
-  array.delete_at(pivot_index)
+#   pivot_index = (array.length / 2).to_i
+#   pivot_value = array[pivot_index]
+#   array.delete_at(pivot_index)
 
-  lesser = Array.new
-  greater = Array.new
+#   lesser = Array.new
+#   greater = Array.new
 
-  array.each do |x|
-    if x <= pivot_value
-      lesser << x
-    else
-      greater << x
-    end
-  end
+#   array.each do |x|
+#     if x <= pivot_value
+#       lesser << x
+#     else
+#       greater << x
+#     end
+#   end
 
-  return quicksort(lesser) + [pivot_value] + quicksort(greater)
-end
+#   return quicksort(lesser) + [pivot_value] + quicksort(greater)
+# end
 
 def quickSort(array)
   length = array.length
@@ -68,7 +68,7 @@ def quickSort(array)
     return array
   end
 
-  puts "--> ARRAY: #{array.inspect}"
+  # puts "--> ARRAY: #{array.inspect}"
 
   half = length/2
   index = half.to_i
@@ -85,18 +85,60 @@ def quickSort(array)
     end
   end
 
-  puts "--> PIVOT: #{value}"
-  puts "------> LEFT: #{left.inspect}"
-  puts "------> RIGHT: #{right.inspect}"
+  # puts "--> PIVOT: #{value}"
+  # puts "------> LEFT: #{left.inspect}"
+  # puts "------> RIGHT: #{right.inspect}"
 
   return quickSort(left) + [value] + quickSort(right)
 
 end
 
+def radixSort(array)
+  array_copy = array
 
-y = [3, 43, 6, -9, 0, -300, 239, 3329, -234, -33423]
+  numbers_of_passes = 0
+
+  array.each do |x|
+    num = x.abs.to_s.size
+    if num > numbers_of_passes
+      numbers_of_passes = num
+    end
+  end
+
+  numbers_of_passes.times do |i|
+    bucket = Array.new(20) {[]}
+    puts bucket.inspect
+    # bucket[1] << array_copy
+    # puts bucket.inspect
+    array.each do |n|
+      # bucket_index = bucket[n]
+      # puts bucket_index
+      z = nil
+      k = n.to_s.split('').map { |digit| z = digit.to_i }
+      if n < 0 then
+        z = -z;
+      end
+      bucket[z] = [z]
+      puts bucket.flatten
+      puts bucket.inspect
+      #puts "NUMBER: #{n} LAST: #{z}"
+
+
+      # k = n.to_s.split('').map { |digit| digit.to_i }
+      # puts k
+      # bucket.flatten
+      # puts bucket.inspect
+    end
+  end
+
+  return array_copy
+end
+
+a = [3, -6, 38, -666, 666, 0]
+b = [-3, 3, 334, -232312, 2, 0]
+y = [3, 43, 6, -9, 0, -300, 239, 49, -234, -123456789, 123456789012]
 x = [9, -7, 0, 5]
-puts quickSort(y).inspect
+puts quickSort(a).inspect
 
 
 # test = Array.new(100000) { rand(1000) }
