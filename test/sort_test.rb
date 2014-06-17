@@ -46,18 +46,18 @@ describe "test sort methods" do
 
 end
 
-Minitest.after_run{
-  test = Array.new(100000) { rand(100000000000000) }
+# Minitest.after_run{
+#   test = Array.new(10) { rand(100000000000000) }
 
-  puts "MERGE SORT"
-  puts Benchmark.measure { test.mergeSort }
-  puts "INSERTION SORT"
-  puts Benchmark.measure { test.insertionSort }
-  puts "QUICK SORT"
-  puts Benchmark.measure { test.quickSort }
-  puts "RADIX SORT"
-  puts Benchmark.measure { test.radixSort }
-  puts "THE .SORT"
-  puts Benchmark.measure { test.sort }
-}
+#   puts "MERGE SORT"
+#   puts Benchmark.measure { test.mergeSort }
+#   puts "INSERTION SORT"
+#   puts Benchmark.measure { test.insertionSort }
+#   puts "QUICK SORT"
+#   puts Benchmark.measure { test.quickSort }
+#   puts "RADIX SORT"
+#   puts Benchmark.measure { test.radixSort }
+#   puts "THE .SORT"
+#   puts Benchmark.measure { test.sort }
+# }
 

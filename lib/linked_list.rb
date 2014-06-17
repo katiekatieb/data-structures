@@ -1,39 +1,75 @@
 class List
-  attr_accessor :last_node, :size
 
-  def initialize(name, before)
-    @size = 0
-    @last_node = add_node(name, nil)
+  def initialize(value)
+    @head = Node.new(value, nil)
   end
 
-  def add_node(name, before)
-    @last_node = Node.new(name, before)
-    @size += 1
+  def add_node(value)
+    node = @head
+    while node.next_node != nil
+      node = node.next_node
+    end
+    node.next_node = Node.new(value, nil)
   end
 
   def search(value)
-    while @last_node != nil
-      return @last_node if @last_node == value
-      @last_node = @last_node.next
+    node = @head
+    while node != nil
+      if node.value == value
+        puts node.value
+      end
+      node = node.next_node
     end
   end
 
-  def remove
+  def remove(value)
+    node = @head
+    if node.value == value
+      @head = @head.next_node
+    else
+      node = @head
+      while (node != nil) && (node.next_node != nil) && ((node.next_node).value != value)
+        node = node.next_node
+      end
 
+      if (node != nil) && (node.next_node != nil)
+        node.next_node = (node.next_node).next_node
+      end
+    end
   end
 
   def to_s
-
+    show_list = []
+    node = @head
+    while node != nil
+      show_list << node.value
+      node = node.next_node
+    end
+    puts show_list.inspect
+    return show_list.inspect
   end
-
 
 end
 
 class Node
-  attr_accessor :name, :before
+  attr_accessor :value, :next_node
 
-  def initialize (name, before)
-    @name = name
-    @before = before
+  def initialize (value, next_node)
+    @value = value
+    @next_node = next_node
   end
 end
+
+list = List.new(1)
+
+list.add_node(2)
+list.add_node(3)
+list.add_node(4)
+list.add_node(5)
+
+list.to_s
+
+list.remove(3)
+list.to_s
+
+list.search(4)
