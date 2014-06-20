@@ -3,10 +3,13 @@ This will hold sample code for a number of classic data structures implemented i
 
 DATA STRUCTURES
 -------
-Linked List = Still working on it.
-Stack = Still working on it.
+Linked List = Completed.
+Stack = Completed.
 Queue = Still working on it.
-Binary Tree = Still working on it.
+Binary Tree = Completed.
 
-Insertion Sort = Nick helped me with this.
+Sort = Completed.
+Doubly Linked List = Still working on it.
+Binary Search Tree = Still working on it.
+
 
