@@ -45,7 +45,7 @@ class List
       show_list << node.value
       node = node.next_node
     end
-    puts show_list.inspect
+    #puts show_list.inspect
     return show_list.inspect
   end
 
@@ -60,16 +60,4 @@ class Node
   end
 end
 
-list = List.new(1)
 
-list.add_node(2)
-list.add_node(3)
-list.add_node(4)
-list.add_node(5)
-
-list.to_s
-
-list.remove(3)
-list.to_s
-
-list.search(4)
